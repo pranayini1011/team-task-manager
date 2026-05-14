@@ -13,18 +13,16 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:3000",
+    "https://team-task-manager-neon-six.vercel.app",
+]
+
 app.add_middleware(
     CORSMiddleware,
-
-    allow_origins=[
-        "http://localhost:3000",
-        "https://team-task-manager-neon-six.vercel.app"
-    ],
-
-    allow_credentials=True,
-
+    allow_origins=origins,
+    allow_credentials=False,
     allow_methods=["*"],
-
     allow_headers=["*"],
 )
 
